@@ -46,6 +46,10 @@ public class RedisTestController {
         return keys;
     }
 
+    /**
+     * 利用zadd插入有序的集合  集合是不能出现重复的
+     * @return
+     */
     @RequestMapping(value = "/saveSorted.json", method = RequestMethod.POST)
     @ResponseBody
     public Object saveSorted() {
@@ -65,7 +69,7 @@ public class RedisTestController {
     }
 
     /**
-     * redis 直接帮我排序
+     * redis 自带的zrange可以帮我们排序
      * 获取排名
      * @return
      */
