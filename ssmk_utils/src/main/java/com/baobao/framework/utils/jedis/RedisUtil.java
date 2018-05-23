@@ -894,7 +894,7 @@ public class RedisUtil {
 	 * 将一个 member 元素及其 score 值加入到有序集 key 当中。
 	 * @param key key
 	 * @param score score 值可以是整数值或双精度浮点数。
-	 * @param member 有序集的成员
+	 * @param member 有序集的成员zrevrange
 	 * @return 被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员。
 	 */
 	public Long addWithSortedSet(final String key, final double score, final String member) {

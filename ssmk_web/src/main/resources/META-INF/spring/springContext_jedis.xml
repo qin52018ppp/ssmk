@@ -23,6 +23,11 @@
         <constructor-arg index="0" value="${redis.jedis.shardInfoCache2.host}" />
         <constructor-arg index="1"  type="int" value="${redis.jedis.shardInfoCache2.port}" />
     </bean>
+    <bean id="jedis.shardInfoCache3" class="redis.clients.jedis.JedisShardInfo">
+        <constructor-arg index="0" value="${redis.jedis.shardInfoCache3.host}" />
+        <constructor-arg index="1"  type="int" value="${redis.jedis.shardInfoCache3.port}" />
+    </bean>
+
 
     <!-- jedis shard pool配置 -->
     <bean id="shardedJedisPoolCache" class="redis.clients.jedis.ShardedJedisPool">
@@ -31,6 +36,7 @@
             <list>
                 <ref bean="jedis.shardInfoCache1" />
                 <ref bean="jedis.shardInfoCache2" />
+                <ref bean="jedis.shardInfoCache3" />
             </list>
         </constructor-arg>
     </bean>

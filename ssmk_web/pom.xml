@@ -70,15 +70,15 @@
     </build>
     <profiles>
         <profile>
-            <id>local</id>
-            <properties>
-                <profile.env>local</profile.env>
-            </properties>
-        </profile>
-        <profile>
             <id>test</id>
             <properties>
                 <profile.env>test</profile.env>
+            </properties>
+        </profile>
+<!--        <profile>
+            <id>local</id>
+            <properties>
+                <profile.env>local</profile.env>
             </properties>
         </profile>
         <profile>
@@ -92,6 +92,6 @@
             <properties>
                 <profile.env>product</profile.env>
             </properties>
-        </profile>
+        </profile>-->
     </profiles>
 </project>
