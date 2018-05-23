@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+<!-- 声明 hessian 第一种方式
+    <bean name="/loginService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service">
+            <bean  class="com.baobao.ssmk.service.impl.LoginServiceImpl"></bean>
+        </property>
+        <property name="debug" value="true"/>
+        <property name="sendCollectionType" value="false"/>
+        <property name="serviceInterface" value="com.baobao.ssmk.service.ILoginService"/>
+    </bean>-->
+    <!--声明 hessian 第二种方式-->
+    <bean id="loginServiceImpl" class="com.baobao.ssmk.service.impl.LoginServiceImpl"></bean>
+    <bean name="/loginService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="loginServiceImpl" />
+        <property name="debug" value="true"/>
+        <property name="sendCollectionType" value="false"/>
+        <property name="serviceInterface" value="com.baobao.ssmk.service.ILoginService"/>
+    </bean>
+</beans>

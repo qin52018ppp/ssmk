@@ -1,0 +1,82 @@
+#*================================================== 页面 头尾 宏定义 ================================================*#
+#macro(InsuranceOpen_header $params)
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        #set( $static_path = ${configuration.getProperty("urlPath","static_path")})
+        #set( $web_path = ${configuration.getProperty("urlPath","web_path")})
+        #set( $nowNanoTime = ${DateUtility.getNanoTimeStamp()})
+        <title>$params.title</title>
+        <script>
+            var staticPath = '$static_path';
+            var webPath = '$web_path';
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <link href="$static_path/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>$!params.title</title>
+        #foreach($css in $params.css)
+            <link rel="stylesheet" type="text/css" href="$static_path/$css"/>
+        #end
+        <!--[if lt IE 9]>
+        <script src="http://html.baobao18.com/wechat/js/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+#end
+
+<!-- 公共JS统计页面尾部  -->
+#macro(h_footer $params)
+</body>
+</html>
+
+    <script src="$static_path/dist/js/jquery.min.js"></script>
+    <script src="$static_path/dist/js/bootstrap.min.js"></script>
+    <script src="$static_path/dist/js/public_.min.js"></script>
+    #foreach($js in $params.js)
+        <script src="$static_path/$js"></script>
+    #end
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266395209'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1266395209' type='text/javascript'%3E%3C/script%3E")); document.getElementById("cnzz_stat_icon_1266395209").style.display = "none";</script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?d3ca1c204a8955e0f27d18f79be4b047";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+#end
+
+<!--登录公共头-->
+#macro(login_header $params)
+    <div class="header" align="center">
+        <div class="container">
+            <a href="http://www.xgnins.com/" target="_blank"><div class="logo logo_2">|&nbsp;&nbsp;$params.title</div></a>
+            #if($params.goLogin)
+                <div class="login_text"><span>已有账号，</span><a class="login" href="$web_path/login/loginIndex.jhtml">马上登录</a></div>
+            #end
+        </div>
+    </div>
+#end
+
+#macro(login_footer $params)
+    <!--登录模块公共footer-->
+    <div class="footer" align="center">
+        <div class="container">
+            <p class="footer_small" style="padding-top: 37px">
+                <a href="http://www.xgnins.com/">新概念官网</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<a href="$web_path/index.jhtml">开放平台</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<a href="http://www.xgnins.com/html/view/pc/about.html">关于我们</a></p>
+            <div class="footer_box_2">
+                <p class="footer_small" style="padding-top: 10px;">技术所有©上海新概念保险经纪有限公司</p>
+                <p class="footer_small gongan"> <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402002320">沪公网安备 31010402002320号</a> 沪ICP备15039948号-2 经营保险经纪业务许可证：260405000000800</p>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266395209'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1266395209' type='text/javascript'%3E%3C/script%3E")); document.getElementById("cnzz_stat_icon_1266395209").style.display = "none";</script>
+#end
+
+#*================================================== 页面 头尾 宏定义 ================================================*#

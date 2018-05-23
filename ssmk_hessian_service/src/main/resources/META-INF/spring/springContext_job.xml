@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd	                    
+	                    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+	
+	<!--任务调度类 cron表达式是一个字符串，字符串以5或6个空格隔开，分为6或7个域，每一个域代表一个含义，Cron有如下两种语法格式：
+  	Seconds Minutes Hours DayofMonth Month DayofWeek Year或
+  	Seconds Minutes Hours DayofMonth Month DayofWeek-->
+<!--	<task:annotation-driven/>-->
+	<task:scheduler id="springScheduler" pool-size="1" />
+	<bean id="demoTask" class="com.baobao.ssmk.task.DemoTask"></bean>
+	<task:scheduled-tasks>
+		<task:scheduled ref="demoTask" method="test1" cron="0 0/5 * * * ? "/>
+	</task:scheduled-tasks>
+	<!-- 支持异步方法执行-->
+	<task:annotation-driven executor="asyncExecutor" />
+	<task:executor id="asyncExecutor" pool-size="100" queue-capacity="10"/>
+</beans>

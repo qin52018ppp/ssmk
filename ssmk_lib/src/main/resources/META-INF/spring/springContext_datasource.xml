@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		 				   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="ssmk_dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="driverClassName">
+            <value>${ssmk.datasource.driverClassName}</value>
+        </property>
+
+        <property name="url">
+            <value>${ssmk.datasource.url}</value>
+        </property>
+        <property name="username">
+            <value>${ssmk.datasource.username}</value>
+        </property>
+        <property name="password">
+            <value>${ssmk.datasource.password}</value>
+        </property>
+        <property name="maxActive">
+            <value>${ssmk.datasource.maxActive}</value>
+        </property>
+        <property name="maxIdle">
+            <value>${ssmk.datasource.maxIdle}</value>
+        </property>
+        <property name="maxWait">
+            <value>${ssmk.datasource.maxWait}</value>
+        </property>
+
+        <property name="testWhileIdle">
+            <value>${ssmk.datasource.testWhileIdle}</value>
+        </property>
+        <property name="timeBetweenEvictionRunsMillis">
+            <value>${ssmk.datasource.timeBetweenEvictionRunsMillis}</value>
+        </property>
+        <property name="minEvictableIdleTimeMillis">
+            <value>${ssmk.datasource.minEvictableIdleTimeMillis}</value>
+        </property>
+        <property name="validationQuery">
+            <value>${ssmk.datasource.validationQuery}</value>
+        </property>
+
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="ssmk_dataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+</beans>
