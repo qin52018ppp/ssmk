@@ -2,17 +2,15 @@ package com.baobao.ssmk;/**
  * Created by Administrator on 2018/5/23.
  */
 
-import com.baobao.framework.utils.jedis.RedisUtil;
+import com.baobao.framework.utils.Md5Utility;
+import com.baobao.ssmk.dao.TUserMapper;
+import com.baobao.ssmk.model.TUser;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.Log4jConfigurer;
-
-import java.io.FileNotFoundException;
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  * @Company:新概念保险
@@ -23,21 +21,13 @@ import java.util.Set;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContext.xml"})
-public class RedisDemoTest {
+public class MybatisDemoTest {
     @Autowired
-    private RedisUtil redisUtil;
+    private TUserMapper tUserMapper;
 
     @Test
     public void testUser() {
-        Set<String> set = redisUtil.revrangeByScoreWithSortedSet("game", 100, -1);
-        StringBuilder s = new StringBuilder();
-        int i = 1;
-        Iterator<String> it = set.iterator();
-        while (it.hasNext()) {
-            String str = it.next();
-            s.append(String.format("\n姓名%s，名次%d。<br>\n", str, i));
-            i++;
-        }
-        System.out.println(s.toString());
+        TUser user =tUserMapper.findUserByUsername("15921490998");
+        Assert.assertEquals(user.getPasswd(), Md5Utility.md5SaltString("123456", "15921490998"));
     }
 }

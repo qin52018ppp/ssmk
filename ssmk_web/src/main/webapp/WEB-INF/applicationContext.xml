@@ -25,6 +25,43 @@
             </list>
         </property>
     </bean>
+    <!-- velocity config -->
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath">
+            <value>WEB-INF/view</value>
+        </property>
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="output.encoding">UTF-8</prop>
+                <prop key="file.resource.loader.cache">false</prop>
+                <prop key="spring.resource.loader.cache">false</prop>
+                <prop key="velocimacro.library.autoreload">true</prop>
+                <prop key="velocimacro.library">/template/wrap.vm</prop>
+                <prop key="velocimacro.permissions.allow.inline.to.replace.global">true</prop>
+                <prop key="velocimacro.permissions.allow.inline.local.scope">false</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- 处理velocity布局 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".vm"/>
+        <property name="toolboxConfigLocation" value="/WEB-INF/velocity_toolbox.xml"/>
+        <property name="contentType" value="text/html; charset=utf-8"></property>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+    </bean>
+
+    <!--    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+            <property name="cache" value="true"/>
+            <property name="prefix" value=""/>
+            <property name="suffix" value=".vm"/>
+            <property name="toolboxConfigLocation" value="/WEB-INF/velocity_toolbox.xml"/>
+            <property name="contentType" value="text/html; charset=utf-8"></property>
+            <property name="exposeSpringMacroHelpers" value="true"/>
+            <property name="layoutUrl" value="layout/accout_default.vm" />
+        </bean>-->
     <!-- 文件上传限制   -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- set the max upload size100MB -->
