@@ -23,7 +23,7 @@ import java.util.Set;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath*:META-INF/spring/applicationContext.xml"})
-public class DemoTest {
+public class RedisDemoTest {
     @Autowired
     private RedisUtil redisUtil;
 
@@ -35,7 +35,7 @@ public class DemoTest {
         Iterator<String> it = set.iterator();
         while (it.hasNext()) {
             String str = it.next();
-            s.append(String.format("姓名%s，名次%d。<br>", str, i));
+            s.append(String.format("\n姓名%s，名次%d。<br>\n", str, i));
             i++;
         }
         System.out.println(s.toString());
