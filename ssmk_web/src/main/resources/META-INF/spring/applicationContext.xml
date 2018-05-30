@@ -14,6 +14,7 @@
 <!--     <context:annotation-config/> -->
     <!-- 具有<context:annotation-config/>功能，多了一个扫描包路径选项，可以省略<context:annotation-config/>   -->
     <context:component-scan base-package="com.baobao.ssmk.**" />
+    <!-- 加载配置文件   -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -24,9 +25,8 @@
             </list>
         </property>
     </bean>
-
-    <bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- 文件上传限制   -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- set the max upload size100MB -->
         <property name="maxUploadSize">
             <value>104857600</value>
@@ -35,6 +35,5 @@
             <value>4096</value>
         </property>
     </bean>
-
     <import resource="classpath*:META-INF/spring/springContext_*.xml"/>
 </beans>
