@@ -74,7 +74,7 @@
                 <profile.env>local</profile.env>
             </properties>
         </profile>
-        <profile>
+        <!--<profile>
             <id>sit</id>
             <properties>
                 <profile.env>sit</profile.env>
@@ -91,6 +91,6 @@
             <properties>
                 <profile.env>pre</profile.env>
             </properties>
-        </profile>
+        </profile>-->
     </profiles>
 </project>
