@@ -6,6 +6,7 @@ package com.baobao.ssmk.service.impl;/**
 import com.baobao.framework.utils.Md5Utility;
 import com.baobao.ssmk.dao.TUserMapper;
 import com.baobao.ssmk.dto.Result;
+import com.baobao.ssmk.dto.TUserRes;
 import com.baobao.ssmk.exception.BusinessExceptionEnum;
 import com.baobao.ssmk.model.TUser;
 import com.baobao.ssmk.service.ILoginService;
@@ -33,7 +34,11 @@ public class LoginServiceImpl implements ILoginService {
         Result result = new Result();
         TUser tUser = tUserMapper.findUserByUsername(userName);
         if (Md5Utility.md5SaltString(pwd, userName).equals(tUser.getPasswd())) {
-            result.setObject(tUser);
+            TUserRes res=new TUserRes();
+            res.setId(tUser.getId());
+            res.setPasswd(tUser.getPasswd());
+            res.setUsername(tUser.getUsername());
+            result.setObject(res);
             result.setCode(BusinessExceptionEnum.SUCCESS_EXCEPTION.getCode());
             result.setMessage(BusinessExceptionEnum.SUCCESS_EXCEPTION.getMessage());
         }else{
