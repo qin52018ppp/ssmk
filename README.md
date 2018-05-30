@@ -5,3 +5,10 @@
 # ssmk_lib-----底层数据库
 # ssmk_utils-----工具类
 # ssmk_web-----hessian RPC 客户端调用
+
+
+# 使用Hessian注意的地方
+1、传输对象必须序列化
+2、传输对象的包路径，名称必须一致
+3、Hessian提供的接口放置的位置
+
