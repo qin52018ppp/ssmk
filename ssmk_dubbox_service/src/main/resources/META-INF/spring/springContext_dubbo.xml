@@ -2,24 +2,24 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://code.alibabatech.com/schema/dubbo
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	<!-- 提供方应用信息，用于计算依赖关系 -->
-<!-- 	<dubbo:application name="product_service" />
+ 	<dubbo:application name="login_service" />
 
-	使用zookeeper广播注册中心暴露服务地址
-	<dubbo:registry address="zookeeper://192.168.175.128:2181" /> 
-	集群
+	<!--使用zookeeper广播注册中心暴露服务地址-->
+<!--	<dubbo:registry address="zookeeper://192.168.175.128:2181" /> -->
+<!--	集群-->
 	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" />
 	
-	用dubbo协议在20880端口暴露服务
+<!--	用dubbo协议在20880端口暴露服务-->
 	<dubbo:protocol name="dubbo" port="20880" />
 
-	声明需要暴露的服务接口
-	<dubbo:service interface="com.baobao.InsuranceProduct.service.ProductService" ref="productService" />
+<!--	声明需要暴露的服务接口-->
+	<dubbo:service interface="com.baobao.ssmk.service.ILoginService" ref="loginService" protocol="dubbo" />
 
-	和本地bean一样实现服务
-	<bean id="productService" class="com.baobao.InsuranceProduct.service.impl.ProductServiceImpl" /> -->
+<!--	和本地bean一样实现服务-->
+	<bean id="loginService" class="com.baobao.ssmk.service.LoginServiceImpl"  />
 
 </beans>

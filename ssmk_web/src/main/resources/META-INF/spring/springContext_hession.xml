@@ -6,6 +6,7 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
+<!-- hessian配置文件
 	<bean id="loginService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl">
 			<value>${login_service_hessian_url}/loginService</value>
@@ -16,6 +17,6 @@
 		<property name="readTimeout">
 			<value>20000</value>
 		</property>
-		<property name="overloadEnabled" value="true"></property><!-- 重载的方法 会有异常 -->
-	</bean>
+		<property name="overloadEnabled" value="true"></property>&lt;!&ndash; 重载的方法 会有异常 &ndash;&gt;
+	</bean>-->
 </beans>

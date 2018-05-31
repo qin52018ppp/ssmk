@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>InsuranceApi_service.root</param-value>
+    <param-value>ssmk_dubbox_service.root</param-value>
   </context-param>
 
   <context-param>
@@ -22,16 +22,4 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
-  <servlet>
-    <servlet-name>dispatcher</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/applicationContext.xml</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>dispatcher</servlet-name>
-    <url-pattern>/remoting/*</url-pattern>
-  </servlet-mapping>
 </web-app>
