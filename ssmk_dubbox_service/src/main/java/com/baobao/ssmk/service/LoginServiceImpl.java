@@ -9,8 +9,8 @@ import com.baobao.ssmk.dto.Result;
 import com.baobao.ssmk.dto.TUserRes;
 import com.baobao.ssmk.exception.BusinessExceptionEnum;
 import com.baobao.ssmk.model.TUser;
-import com.baobao.ssmk.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @Company:新概念保险
@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Date:Created in 11:42 2018/5/23
  * @Modified By:
  */
+@Service
 public class LoginServiceImpl implements ILoginService {
     @Autowired
     private TUserMapper tUserMapper;

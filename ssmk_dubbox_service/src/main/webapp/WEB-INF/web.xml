@@ -8,18 +8,33 @@
     <param-name>webAppRootKey</param-name>
     <param-value>ssmk_dubbox_service.root</param-value>
   </context-param>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath*:/spring/applicationContext.xml</param-value>
+  </context-param>
 
   <context-param>
     <param-name>log4jConfigLocation</param-name>
     <param-value>classpath:log4j.xml</param-value>
   </context-param>
 
+  <!--this listener must be defined before the spring listener-->
   <listener>
-    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    <listener-class>com.alibaba.dubbo.remoting.http.servlet.BootstrapListener</listener-class>
   </listener>
 
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>com.alibaba.dubbo.remoting.http.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
 </web-app>
