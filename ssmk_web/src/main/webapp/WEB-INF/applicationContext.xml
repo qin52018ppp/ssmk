@@ -22,9 +22,7 @@
                 <value>classpath*:datasource.properties</value>
                 <value>classpath*:jedis.properties</value>
                 <value>classpath*:urlPath.properties</value>
-<!--
                 <value>classpath*:dubbo.properties</value>
--->
             </list>
         </property>
     </bean>

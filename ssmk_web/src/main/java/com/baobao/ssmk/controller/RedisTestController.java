@@ -3,6 +3,7 @@ package com.baobao.ssmk.controller;/**
  */
 
 import com.baobao.framework.utils.jedis.RedisUtil;
+import com.baobao.ssmk.service.IRedisService;
 import com.baobao.ssmk.vo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,17 @@ public class RedisTestController {
     public static final Logger LOGGER = LoggerFactory.getLogger(RedisTestController.class);
     @Autowired
     private RedisUtil redisUtil;
+
+    @Autowired
+    private IRedisService redisService;
+
+    @RequestMapping(value = "/saveKV.json", method = RequestMethod.POST)
+    @ResponseBody
+    public Object save(String key, String value) {
+        return redisService.save(key, value);
+    }
+
+
     @RequestMapping(value = "/get.json", method = RequestMethod.POST)
     @ResponseBody
     public Object get(String key) {
