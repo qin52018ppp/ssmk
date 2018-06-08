@@ -2,23 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-<!-- 提供方应用信息，用于计算依赖关系 -->
- 	<dubbo:application name="ssmk_dubbox_service" owner="qin" organization="ssmk" />
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<!--使用zookeeper广播注册中心暴露服务地址-->
-<!--	<dubbo:registry address="zookeeper://192.168.175.128:2181" /> -->
-<!--	集群-->
-	<dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181?backup=127.0.0.1:2182,127.0.0.1:2183" />
-	
-<!--	用dubbo协议在20880端口暴露服务-->
-	<dubbo:protocol name="dubbo" serialization="dubbo"/>
+	<dubbo:application name="ssmk_dubbox_service" owner="ssmk" organization="ssmk" />
 
-<!--	声明需要暴露的服务接口-->
-	<dubbo:service interface="com.baobao.ssmk.service.ILoginService" ref="loginService" protocol="dubbo" timeout="300000" />
+	<!-- 配置注册中心，多个地址用逗号隔开-->
+	<dubbo:registry protocol="zookeeper" address="${ssmk.dubbo.address}" timeout="${ssmk.dubbo.timeout}" />
 
-<!--	和本地bean一样实现服务-->
-	<bean id="loginService" class="com.baobao.ssmk.service.LoginServiceImpl"  />
+	<!-- 配置服务提供者delay:延迟注册服务时间(毫秒) ，设为-1时，表示延迟到Spring容器初始化完成时暴露服务 -->
+	<dubbo:provider delay="-1" timeout="10000" />
+
+	<!-- 配置服务提供者协议 ，由提供方指定，消费方被动接受-->
+	<!--<dubbo:protocol name="dubbo" port="30601" accesslog="true"  threads="800" host=""/>-->
+	<dubbo:protocol name="dubbo" host="${dubbo.protocol.host}" port="${dubbo.protocol.port}" />
+
+	<!-- 监控中心协议，如果为protocol="registry"，表示从注册中心发现监控中心地址，否则直连监控中心 -->
+	<dubbo:monitor protocol="registry"/>
+
+	<bean id="redisService" class="com.baobao.ssmk.service.RedisServiceImpl"></bean>
+	<bean id="testService" class="com.baobao.ssmk.service.TestServiceImpl"></bean>
+
+	<!-- 声明需要暴露的服务接口 -->
+	<dubbo:service interface="com.baobao.ssmk.service.IRedisService" ref="redisService" version="${dubbo.provider.version}"/>
+
+	<dubbo:service interface="com.baobao.ssmk.service.ITestService" ref="testService" version="${dubbo.provider.version}"/>
 
 </beans>

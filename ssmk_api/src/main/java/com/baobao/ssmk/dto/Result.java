@@ -28,6 +28,14 @@ public class Result implements Serializable{
      */
     private Object object;
 
+    public Result() {
+
+    }
+
+    public Result(Object object) {
+        this.object = object;
+    }
+
     public String getCode() {
         return code;
     }

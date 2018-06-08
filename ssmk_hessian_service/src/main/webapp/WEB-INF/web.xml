@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>InsuranceApi_service.root</param-value>
+    <param-value>ssmk_hessian_service.root</param-value>
   </context-param>
 
   <context-param>
@@ -21,6 +21,7 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
 
   <servlet>
     <servlet-name>dispatcher</servlet-name>

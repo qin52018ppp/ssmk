@@ -5,29 +5,12 @@
     <display-name>Archetype Created Web Application</display-name>
     <context-param>
         <param-name>webAppRootKey</param-name>
-        <param-value>InsuranceProduct_web.root</param-value>
+        <param-value>ssmk_web.root</param-value>
     </context-param>
     <context-param>
         <param-name>log4jConfigLocation</param-name>
         <param-value>classpath:log4j.xml</param-value>
     </context-param>
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
-    </context-param>
-    <!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->
-    <!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->
-    <!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->
-    <!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面),以保证它是过滤器链中第一个起作用的 -->
-<!--    <filter>
-        <filter-name>shiroFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <init-param>
-            &lt;!&ndash; 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 &ndash;&gt;
-            <param-name>targetFilterLifecycle</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -40,21 +23,22 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-<!--    <filter-mapping>
-        <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>-->
-        <listener>
+    <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
+<!--    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+    </listener>-->
+
+
     <!--ContextLoaderListener初始化的上下文加载的Bean是对于整个应用程序共享的，不管是使用什么表现层技术，一般如DAO层、Service层Bean。 -->
-    <listener>
+<!--    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <!--
+    </listener>-->
+
     <listener>
       <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener> -->
+    </listener>
 
     <!--DispatcherServlet初始化的上下文加载的Bean是只对Spring Web MVC有效的Bean，如Controller、HandlerMapping、HandlerAdapter等等，该初始化上下文应该只加载Web相关组件。 -->
     <servlet>
@@ -62,7 +46,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/dispatch-servlet.xml</param-value>
+            <param-value>/WEB-INF/applicationContext.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
