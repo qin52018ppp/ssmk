@@ -9,7 +9,7 @@ package com.baobao.ssmk.service;/**
  * @Modified By:
  */
 public interface ITestService {
-    Object test(Long n);
+    Object getUserById(Long n);
 
-    Object test2(String n);
+    Object getUserByName(String n);
 }

@@ -1,7 +1,11 @@
 package com.baobao.ssmk.service;/**
  * Created by Administrator on 2018/5/23.
  */
+
 import com.baobao.ssmk.dao.TUserMapper;
+import com.baobao.ssmk.dto.TUserRes;
+import com.baobao.ssmk.model.TUser;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +22,18 @@ public class TestServiceImpl implements ITestService {
     private TUserMapper tUserMapper;
 
     @Override
-    public Object test(Long n) {
-        return tUserMapper.selectByPrimaryKey(n);
+    public Object getUserById(Long n) {
+        TUser tUser = tUserMapper.selectByPrimaryKey(n);
+        TUserRes tUserRes = new TUserRes();
+        BeanUtils.copyProperties(tUser, tUserRes);
+        return tUserRes;
     }
 
     @Override
-    public Object test2(String n) {
-        return tUserMapper.findUserByUsername(n);
+    public Object getUserByName(String n) {
+        TUser tUser = tUserMapper.findUserByUsername(n);
+        TUserRes tUserRes = new TUserRes();
+        BeanUtils.copyProperties(tUser, tUserRes);
+        return tUserRes;
     }
 }
