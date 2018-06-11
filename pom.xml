@@ -13,7 +13,7 @@
         <module>ssmk_web</module>
         <module>ssmk_hessian_service</module>
         <module>ssmk_utils</module>
-        <module>ssmk_dubbox_service</module>
+        <module>ssmk_dubbo_service</module>
     </modules>
 
     <properties>

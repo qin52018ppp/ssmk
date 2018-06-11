@@ -7,7 +7,7 @@
        http://code.alibabatech.com/schema/dubbo
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<dubbo:application name="ssmk_dubbox_service" owner="ssmk" organization="ssmk" />
+	<dubbo:application name="ssmk_dubbo_service" owner="ssmk" organization="ssmk" />
 
 	<!-- 配置注册中心，多个地址用逗号隔开-->
 	<dubbo:registry protocol="zookeeper" address="${ssmk.dubbo.address}" timeout="${ssmk.dubbo.timeout}" />

@@ -8,9 +8,9 @@
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ssmk_dubbox_service</artifactId>
+    <artifactId>ssmk_dubbo_service</artifactId>
     <packaging>war</packaging>
-    <name>ssmk_dubbox_service</name>
+    <name>ssmk_dubbo_service</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
