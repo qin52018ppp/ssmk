@@ -17,6 +17,7 @@ public class TUserReq implements Serializable{
     private String password;
     private String roleId;
 
+    private String max;
     public String getId() {
         return id;
     }
