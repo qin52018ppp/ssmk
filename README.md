@@ -19,3 +19,8 @@
 # SOA项目运行时需要修改dubbox的配置以便于兼容spring4.X
 
 更改
+
+
+TransportClientTest类操作es的客户端
+本案例运行的elasticSearch版本为elasticsearch-6.1.2，
+中文分词器版本：elasticsearch-analysis-ik-6.1.2
